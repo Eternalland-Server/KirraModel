@@ -1,15 +1,14 @@
 package net.sakuragame.eternal.kirramodel.model.meta.sub
 
 import ink.ptms.adyeshach.common.entity.EntityInstance
-import net.sakuragame.eternal.dragoncore.network.PacketSender
 import net.sakuragame.eternal.kirramodel.KirraModelAPI
 import net.sakuragame.eternal.kirramodel.getNearByPlayers
 import taboolib.common.platform.function.submit
 import taboolib.common.platform.service.PlatformExecutor
 
-data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val animation: String) {
+data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val animation: Animation) {
 
-    fun play(entity: EntityInstance) {
+    fun start(entity: EntityInstance) {
         if (!enabled) {
             return
         }
@@ -20,7 +19,7 @@ data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val an
             if (players.isEmpty()) {
                 return@submit
             }
-            PacketSender.setModelEntityAnimation(players, uuid, animation, 20)
+            animation.play(uuid, players)
         }
     }
 
