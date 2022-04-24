@@ -20,6 +20,7 @@ taboolib {
     install("module-database")
     install("module-lang")
     install("module-nms")
+    install("module-kether")
     install("module-nms-util")
     install("platform-bukkit")
     classifier = null
@@ -38,7 +39,9 @@ repositories {
 }
 
 dependencies {
+    compileOnly("ink.ptms:Adyeshach:1.5.7@jar")
     compileOnly("ink.ptms.core:v11200:11200")
+    compileOnly("net.sakuragame.eternal:KirraCore-Bukkit:1.2.3-SNAPSHOT@jar")
     compileOnly("net.sakuragame.eternal:DragonCore:2.4.8-SNAPSHOT@jar")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))

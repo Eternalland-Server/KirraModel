@@ -1,0 +1,16 @@
+coins:
+  display-name: "&6&l金币"
+  interact:
+    enable: true
+    type: WALK
+    animation: ""
+    actions: |-
+      player parkour coins add 1
+    destroy: true
+  animation:
+    idle: "donghua"
+    timer:
+      enable: false
+      delay: 0
+      period: 100
+      value: ""
