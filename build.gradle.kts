@@ -8,6 +8,8 @@ taboolib {
     description {
         dependencies {
             name("DragonCore")
+            name("KirraCoreBukkit")
+            name("Adyeshach")
         }
         contributors {
             name("闲蛋")
@@ -23,6 +25,7 @@ taboolib {
     install("module-kether")
     install("module-nms-util")
     install("platform-bukkit")
+    install("expansion-command-helper")
     classifier = null
     version = "6.0.7-52"
 }
@@ -35,6 +38,7 @@ repositories {
         }
         url = uri("https://maven.ycraft.cn/repository/maven-snapshots/")
     }
+    maven { url = uri("https://repo.tabooproject.org/repository/maven-releases/") }
     mavenCentral()
 }
 

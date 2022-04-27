@@ -1,14 +1,15 @@
 coins:
   display-name: "&6&l金币"
+  loc: "world @ 0 @ 60 @ 0 @ 0 @ 0"
   interact:
     enable: true
     type: WALK
-    animation: ""
+    animation: "donghua @ 20"
     actions: |-
       player parkour coins add 1
     destroy: true
   animation:
-    idle: "donghua"
+    idle: "donghua @ 20"
     timer:
       enable: false
       delay: 0

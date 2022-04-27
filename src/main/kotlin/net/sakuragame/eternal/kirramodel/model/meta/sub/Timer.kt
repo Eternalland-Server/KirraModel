@@ -3,6 +3,8 @@ package net.sakuragame.eternal.kirramodel.model.meta.sub
 import ink.ptms.adyeshach.common.entity.EntityInstance
 import net.sakuragame.eternal.kirramodel.KirraModelAPI
 import net.sakuragame.eternal.kirramodel.getNearByPlayers
+import net.sakuragame.eternal.kirramodel.model.Recyclable
+import org.bukkit.Bukkit
 import taboolib.common.platform.function.submit
 import taboolib.common.platform.service.PlatformExecutor
 
@@ -23,11 +25,11 @@ data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val an
         }
     }
 
-    companion object {
+    companion object : Recyclable {
 
         private val tasks = mutableListOf<PlatformExecutor.PlatformTask>()
 
-        fun recycle() {
+        override fun recycle() {
             tasks.forEach {
                 it.cancel()
             }
