@@ -5,7 +5,6 @@ import net.sakuragame.eternal.kirramodel.KirraModelAPI
 import net.sakuragame.eternal.kirramodel.model.meta.sub.Animation
 import net.sakuragame.eternal.kirramodel.model.meta.sub.InteractType
 import org.bukkit.entity.Player
-import taboolib.common.platform.function.adaptCommandSender
 import taboolib.common.platform.function.adaptPlayer
 import taboolib.common.platform.function.warning
 import taboolib.module.kether.KetherShell
@@ -33,7 +32,7 @@ data class InteractMeta(val enabled: Boolean, val type: InteractType, val animat
                 this.sender = adaptPlayer(player)
             }
         } catch (e: Throwable) {
-            warning("Kether 在执行脚本时遇到了一个错误.")
+            warning("在执行 Kether 脚本时遇到了一个错误.")
             warning(e)
             CompletableFuture.completedFuture(false)
         }

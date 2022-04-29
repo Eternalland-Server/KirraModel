@@ -24,4 +24,9 @@ object Commands {
             sender.sendMessage("&c[System] &7重载完成.".colored())
         }
     }
+
+    @CommandBody
+    val createTemp = subCommand {
+
+    }
 }
