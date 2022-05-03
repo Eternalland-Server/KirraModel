@@ -1,6 +1,7 @@
 package net.sakuragame.eternal.kirramodel.compat.skript
 
 import ch.njol.skript.Skript
+import ch.njol.skript.lang.util.SimpleEvent
 import ch.njol.skript.registrations.EventValues
 import ch.njol.skript.util.Getter
 import net.sakuragame.eternal.kirramodel.compat.skript.event.ModelInteractEvent
@@ -19,7 +20,7 @@ object CompatSkript {
             return
         }
         info("与 Skript 进行挂钩.")
-        Skript.registerEvent("model interact", ModelInteractEvent::class.java, net.sakuragame.eternal.kirramodel.event.ModelInteractEvent::class.java)
+        Skript.registerEvent("model interact", SimpleEvent::class.java, net.sakuragame.eternal.kirramodel.event.ModelInteractEvent::class.java, "model interact")
         EventValues.registerEventValue(net.sakuragame.eternal.kirramodel.event.ModelInteractEvent::class.java, Player::class.java,
             object : Getter<Player, net.sakuragame.eternal.kirramodel.event.ModelInteractEvent>() {
 

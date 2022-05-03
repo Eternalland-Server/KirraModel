@@ -9,7 +9,7 @@ import taboolib.expansion.createHelper
 import taboolib.module.chat.colored
 
 @Suppress("SpellCheckingInspection")
-@CommandHeader(name = "KirraModels", aliases = ["kmodel", "kmodels"])
+@CommandHeader(name = "KirraModels", aliases = ["model", "kmodel", "kmodels"])
 object Commands {
 
     @CommandBody
