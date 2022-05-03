@@ -43,7 +43,7 @@ object Loader {
             val loc = file.getBukkitLocation("$id.loc")
             val interactMeta = file.getInteractMeta("$id.interact")
             val animationMeta = file.getAnimationMeta("$id.animation")
-            KirraModelAPI.models[id] = Model(displayName, loc, interactMeta, animationMeta)
+            KirraModelAPI.models[id] = Model(id, displayName, loc, interactMeta, animationMeta)
         }
     }
 

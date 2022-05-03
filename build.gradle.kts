@@ -10,6 +10,7 @@ taboolib {
             name("DragonCore")
             name("KirraCoreBukkit")
             name("Adyeshach")
+            name("Skript").optional(true)
         }
         contributors {
             name("闲蛋")
@@ -39,10 +40,12 @@ repositories {
         url = uri("https://maven.ycraft.cn/repository/maven-snapshots/")
     }
     maven { url = uri("https://repo.tabooproject.org/repository/maven-releases/") }
+    maven { url = uri("https://repo.skriptlang.org/releases") }
     mavenCentral()
 }
 
 dependencies {
+    compileOnly("com.github.SkriptLang:Skript:2.6.1")
     compileOnly("ink.ptms:Adyeshach:1.5.7@jar")
     compileOnly("ink.ptms.core:v11200:11200")
     compileOnly("net.sakuragame.eternal:KirraCore-Bukkit:1.2.3-SNAPSHOT@jar")

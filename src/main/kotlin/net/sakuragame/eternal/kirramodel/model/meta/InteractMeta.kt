@@ -2,6 +2,7 @@ package net.sakuragame.eternal.kirramodel.model.meta
 
 import ink.ptms.adyeshach.common.entity.EntityInstance
 import net.sakuragame.eternal.kirramodel.KirraModelAPI
+import net.sakuragame.eternal.kirramodel.event.ModelInteractEvent
 import net.sakuragame.eternal.kirramodel.model.meta.sub.Animation
 import net.sakuragame.eternal.kirramodel.model.meta.sub.InteractType
 import org.bukkit.entity.Player
@@ -24,6 +25,10 @@ data class InteractMeta(val enabled: Boolean, val type: InteractType, val animat
         if (!KirraModelAPI.interactBaffle.hasNext(player.name)) {
             return
         }
+        val model = KirraModelAPI.getModelByEntityUUID(entityUUID) ?: return
+        if (ModelInteractEvent(player, model).call()) {
+            return
+        }
         if (!enabled) {
             return
         }
@@ -32,12 +37,12 @@ data class InteractMeta(val enabled: Boolean, val type: InteractType, val animat
                 this.sender = adaptPlayer(player)
             }
         } catch (e: Throwable) {
-            warning("在执行 Kether 脚本时遇到了一个错误.")
+            warning("执行 Kether 脚本时遇到了一个错误.")
             warning(e)
             CompletableFuture.completedFuture(false)
         }
         if (destroy) {
-            KirraModelAPI.getModelByEntityUUID(entityUUID)?.let { it.kEntity?.destroy() }
+            model.kEntity?.destroy()
         }
         KirraModelAPI.interactBaffle.next(player.name)
     }
