@@ -5,7 +5,7 @@ import net.sakuragame.eternal.kirramodel.model.meta.InteractMeta
 import org.bukkit.Location
 
 @Suppress("MemberVisibilityCanBePrivate")
-class Model(val id: String, val name: String, loc: Location?, interactMeta: InteractMeta, animationMeta: AnimationMeta) {
+class Model(val id: String, val name: String, val temp: Boolean, loc: Location?, interactMeta: InteractMeta, animationMeta: AnimationMeta) {
 
     var kEntity: KEntity? = null
 

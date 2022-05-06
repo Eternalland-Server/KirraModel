@@ -15,7 +15,6 @@ import taboolib.module.configuration.Type
 import taboolib.module.configuration.util.getStringColored
 import java.io.File
 
-@Suppress("MemberVisibilityCanBePrivate")
 object Loader {
 
     private val folder by lazy {
@@ -43,7 +42,7 @@ object Loader {
             val loc = file.getBukkitLocation("$id.loc")
             val interactMeta = file.getInteractMeta("$id.interact")
             val animationMeta = file.getAnimationMeta("$id.animation")
-            KirraModelAPI.models[id] = Model(id, displayName, loc, interactMeta, animationMeta)
+            KirraModelAPI.models += id to Model(id = id, name = displayName, temp = false, loc = loc, interactMeta = interactMeta, animationMeta = animationMeta)
         }
     }
 

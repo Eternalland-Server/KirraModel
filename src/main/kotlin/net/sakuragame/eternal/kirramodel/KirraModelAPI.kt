@@ -31,7 +31,8 @@ object KirraModelAPI {
     }
 
     fun createTempModel(loc: Location, model: Model) {
-
+        val mapId = "TEMP_" + model.id + UUID.randomUUID().toString()
+        models += mapId to Model(id = model.id, name = model.name, temp = true, loc = loc, interactMeta = model.interactMeta, animationMeta = model.animationMeta)
     }
 
     fun getModelByEntityUUID(uuid: UUID) = models.values.find { it.kEntity?.entity?.normalizeUniqueId == uuid }
