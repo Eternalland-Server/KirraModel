@@ -8,10 +8,10 @@ import org.bukkit.Bukkit
 import taboolib.common.platform.function.submit
 import taboolib.common.platform.service.PlatformExecutor
 
-data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val animation: Animation) {
+data class Timer(val enabled: Boolean, val delay: Long, val period: Long, val animation: Animation?) {
 
     fun start(entity: EntityInstance) {
-        if (!enabled) {
+        if (!enabled || animation == null) {
             return
         }
         val uuid = entity.normalizeUniqueId

@@ -50,20 +50,21 @@ object Loader {
 
     private fun Configuration.getAnimation(path: String): Animation? {
         val split = getString(path)?.split(" @ ") ?: return null
+        if (split.size < 2) return null
         return Animation(split[0], split[1].toInt())
     }
 
     private fun Configuration.getInteractMeta(path: String): InteractMeta {
         val enable = getBoolean("$path.enable")
         val type = InteractType.values().find { it.name == getString("$path.type")?.uppercase() } ?: nullError("type")
-        val animation = getAnimation("$path.animation") ?: nullError("animation")
+        val animation = getAnimation("$path.animation")
         val actions = getStringList("$path.actions")
         val destroy = getBoolean("$path.destroy")
         return InteractMeta(enable, type, animation, actions, destroy)
     }
 
     private fun Configuration.getAnimationMeta(path: String): AnimationMeta {
-        val idleAnimation = getAnimation("$path.idle") ?: nullError("idleAnimation")
+        val idleAnimation = getAnimation("$path.idle")
         val timer = getTimer("$path.timer")
         return AnimationMeta(idleAnimation, timer)
     }
@@ -72,7 +73,7 @@ object Loader {
         val enable = getBoolean("$path.enable")
         val delay = getLong("$path.delay")
         val period = getLong("$path.period")
-        val animation = getAnimation("$path.value") ?: nullError("timerAnimation")
+        val animation = getAnimation("$path.value")
         return Timer(enable, delay, period, animation)
     }
 }

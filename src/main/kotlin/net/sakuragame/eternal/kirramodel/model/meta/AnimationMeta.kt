@@ -8,13 +8,15 @@ import net.sakuragame.eternal.kirramodel.model.meta.sub.Timer
 import taboolib.common.platform.event.SubscribeEvent
 import java.util.*
 
-data class AnimationMeta(val idle: Animation, val timer: Timer) {
+data class AnimationMeta(val idle: Animation?, val timer: Timer) {
 
     lateinit var entityUUID: UUID
 
     fun init(entity: EntityInstance) {
         entityUUID = entity.normalizeUniqueId
-        animationMap[entityUUID] = idle
+        if (idle != null) {
+            animationMap[entityUUID] = idle
+        }
         timer.start(entity)
     }
 

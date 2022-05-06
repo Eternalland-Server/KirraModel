@@ -13,7 +13,7 @@ import java.util.*
 import java.util.concurrent.CompletableFuture
 
 @Suppress("SpellCheckingInspection")
-data class InteractMeta(val enabled: Boolean, val type: InteractType, val animation: Animation, val actions: List<String>, val destroy: Boolean) {
+data class InteractMeta(val enabled: Boolean, val type: InteractType, val animation: Animation?, val actions: List<String>, val destroy: Boolean) {
 
     lateinit var entityUUID: UUID
 
@@ -22,16 +22,14 @@ data class InteractMeta(val enabled: Boolean, val type: InteractType, val animat
     }
 
     fun interact(player: Player) {
-        if (!KirraModelAPI.interactBaffle.hasNext(player.name)) {
+        if (!KirraModelAPI.interactBaffle.hasNext(player.name) || !enabled) {
             return
         }
         val model = KirraModelAPI.getModelByEntityUUID(entityUUID) ?: return
         if (ModelInteractEvent(player, model).call()) {
             return
         }
-        if (!enabled) {
-            return
-        }
+        animation?.play(entityUUID)
         try {
             KetherShell.eval(actions, namespace = listOf("kirramodel")) {
                 this.sender = adaptPlayer(player)
