@@ -17,8 +17,4 @@ object KirraModel : Plugin() {
     val plugin by lazy {
         BukkitPlugin.getInstance()
     }
-
-    override fun onEnable() {
-        releaseResourceFile("models")
-    }
 }

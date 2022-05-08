@@ -6,6 +6,7 @@ import ink.ptms.adyeshach.api.event.AdyeshachEntityInteractEvent
 import ink.ptms.adyeshach.common.entity.EntityInstance
 import net.sakuragame.eternal.kirramodel.KirraModelAPI
 import net.sakuragame.eternal.kirramodel.model.meta.sub.InteractType
+import net.sakuragame.eternal.kirramodel.safeDistance
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerMoveEvent
 import taboolib.common.platform.event.SubscribeEvent
@@ -46,6 +47,6 @@ object FunctionListener {
     }
 
     private fun Player.getEntityNearly(): EntityInstance? {
-        return AdyeshachAPI.getEntityNearly(player)
+        return AdyeshachAPI.getEntity(this) { entity -> entity.getLocation().safeDistance(location) <= KirraModelAPI.walkDistance }
     }
 }

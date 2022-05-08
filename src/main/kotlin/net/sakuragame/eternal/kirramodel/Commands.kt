@@ -20,6 +20,12 @@ object Commands {
 
     @CommandBody
     val reload = subCommand {
+        literal("recycle") {
+            execute<CommandSender> { sender, _, _ ->
+                Loader.reload(recycle = true)
+                sender.sendMessage("&c[System] &7重载完成. (已删除所有实体)".colored())
+            }
+        }
         execute<CommandSender> { sender, _, _ ->
             Loader.reload()
             sender.sendMessage("&c[System] &7重载完成.".colored())
@@ -36,7 +42,7 @@ object Commands {
                     return@execute
                 }
                 KirraModelAPI.createTempModel(player.location, originModel)
-                player.sendMessage("&c[System] &7模型创建成功.")
+                player.sendMessage("&c[System] &7模型创建成功.".colored())
             }
         }
     }

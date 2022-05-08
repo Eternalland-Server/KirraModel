@@ -50,6 +50,7 @@ dependencies {
     compileOnly("ink.ptms.core:v11200:11200")
     compileOnly("net.sakuragame.eternal:KirraCore-Bukkit:1.2.3-SNAPSHOT@jar")
     compileOnly("net.sakuragame.eternal:DragonCore:2.4.8-SNAPSHOT@jar")
+    compileOnly("net.sakuragame.eternal:JustMessage:1.0.4-SNAPSHOT@jar")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
 }

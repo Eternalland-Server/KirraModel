@@ -15,6 +15,9 @@ object KirraModelAPI {
     val viewDistance: Double
         get() = KirraModel.conf.getDouble("view-distance")
 
+    val walkDistance: Double
+        get() = KirraModel.conf.getDouble("walk-distance")
+
     val interactBaffle by lazy {
         Baffle.of((KirraModel.conf.getDouble("interact-cooldown-secs") * 1000).roundToLong(), TimeUnit.MILLISECONDS)
     }
@@ -30,8 +33,14 @@ object KirraModelAPI {
         models.clear()
     }
 
-    fun createTempModel(loc: Location, model: Model) {
-        val mapId = "TEMP_" + model.id + UUID.randomUUID().toString()
+    fun removeModel(id: String): Boolean {
+        val model = models[id] ?: return false
+        model.kEntity?.entity?.remove() ?: return false
+        return true
+    }
+
+    fun createTempModel(loc: Location, model: Model, id: String? = null) {
+        val mapId = id ?: ("TEMP_" + model.id + UUID.randomUUID().toString())
         models += mapId to Model(id = model.id, name = model.name, temp = true, loc = loc, interactMeta = model.interactMeta, animationMeta = model.animationMeta)
     }
 

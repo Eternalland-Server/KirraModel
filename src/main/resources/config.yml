@@ -1,2 +1,3 @@
 view-distance: 10
+walk-distance: 0.1
 interact-cooldown-secs: 1.0

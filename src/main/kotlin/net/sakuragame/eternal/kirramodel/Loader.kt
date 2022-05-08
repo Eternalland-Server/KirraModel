@@ -26,9 +26,11 @@ object Loader {
         reload()
     }
 
-    fun reload() {
+    fun reload(recycle: Boolean = false) {
         submit(async = true) {
-            KirraModelAPI.recycleModels()
+            if (recycle) {
+                KirraModelAPI.recycleModels()
+            }
             val yamlFiles = folder.listFiles()?.map { Configuration.loadFromFile(it, Type.YAML) } ?: return@submit
             yamlFiles.forEach {
                 load(it)
