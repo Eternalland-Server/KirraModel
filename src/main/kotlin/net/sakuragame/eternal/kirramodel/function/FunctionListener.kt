@@ -9,6 +9,7 @@ import net.sakuragame.eternal.kirramodel.model.meta.sub.InteractType
 import net.sakuragame.eternal.kirramodel.safeDistance
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerMoveEvent
+import org.bukkit.event.player.PlayerToggleSprintEvent
 import taboolib.common.platform.event.SubscribeEvent
 
 object FunctionListener {
@@ -35,6 +36,9 @@ object FunctionListener {
             model.interactMeta.interact(player = player)
         }
     }
+
+    @SubscribeEvent
+    fun e(e: PlayerToggleSprintEvent) {}
 
     @SubscribeEvent
     fun e(e: PlayerMoveEvent) {

@@ -35,7 +35,7 @@ object KirraModelAPI {
 
     fun removeModel(id: String): Boolean {
         val model = models[id] ?: return false
-        model.kEntity?.entity?.remove() ?: return false
+        model.kEntity?.destroy() ?: return false
         return true
     }
 
