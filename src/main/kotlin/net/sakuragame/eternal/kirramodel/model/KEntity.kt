@@ -20,6 +20,7 @@ data class KEntity(val entity: EntityInstance) {
                 setCustomName(name.colored())
                 setCustomNameVisible(false)
                 setNoGravity(true)
+
             }
             return KEntity(entity = entity)
         }
